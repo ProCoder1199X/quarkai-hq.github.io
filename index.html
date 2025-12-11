@@ -4,257 +4,483 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quark AI - Accelerating Intelligence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    * {
+      scroll-behavior: smooth;
+    }
     body {
-      background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+      background-color: #000000;
       color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
     }
-    .aggressive-text {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 0.05em;
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
     }
-    .glow-effect {
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.2);
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .card-hover {
-      transition: all 0.3s ease;
+    .border-glow {
+      border: 1px solid #333;
+      transition: all 0.3s;
     }
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    .border-glow:hover {
+      border-color: #666;
+      transform: translateY(-2px);
     }
-    .gradient-border {
+    nav a {
       position: relative;
-      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-      border: 2px solid transparent;
+      transition: opacity 0.3s;
     }
-    .gradient-border::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, #ffffff, #888888);
-      border-radius: inherit;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+    nav a:hover {
+      opacity: 0.7;
     }
-    .gradient-border:hover::before {
-      opacity: 0.5;
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #333, transparent);
+      margin: 4rem 0;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+    .sponsor-logo {
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      filter: grayscale(100%);
     }
-    .animate-pulse-slow {
-      animation: pulse 3s ease-in-out infinite;
-    }
-    .nav-link {
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: white;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    .hero-gradient {
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    }
-    .project-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      margin-right: 8px;
-      margin-bottom: 8px;
+    .sponsor-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%);
     }
   </style>
 </head>
-<body class="font-['Poppins'] text-white">
-  <!-- Header -->
-  <header class="fixed w-full bg-black/80 backdrop-blur-md shadow-lg z-50">
-    <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
-      <h1 class="text-5xl aggressive-text glow-effect tracking-wider">QUARK AI</h1>
-      <div class="space-x-8">
-        <a href="#home" class="nav-link text-white font-bold uppercase text-sm">Home</a>
-        <a href="#about" class="nav-link text-white font-bold uppercase text-sm">About</a>
-        <a href="#projects" class="nav-link text-white font-bold uppercase text-sm">Projects</a>
-        <a href="#contact" class="nav-link text-white font-bold uppercase text-sm">Contact</a>
+<body class="bg-black text-white">
+  
+  <!-- Navigation -->
+  <header class="fixed w-full top-0 bg-black/90 backdrop-blur-md border-b border-gray-900 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold mono tracking-wider">QUARK_AI</h1>
+      <div class="hidden md:flex space-x-8 text-sm">
+        <a href="#home" class="uppercase tracking-wide">Home</a>
+        <a href="#about" class="uppercase tracking-wide">About</a>
+        <a href="#philosophy" class="uppercase tracking-wide">Philosophy</a>
+        <a href="#projects" class="uppercase tracking-wide">Projects</a>
+        <a href="#roadmap" class="uppercase tracking-wide">Roadmap</a>
+        <a href="#partnerships" class="uppercase tracking-wide">Partners</a>
+        <a href="#contact" class="uppercase tracking-wide">Contact</a>
       </div>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 hero-gradient">
-    <div class="container mx-auto px-4 text-center">
-      <div class="animate-pulse-slow mb-8">
-        <div class="w-20 h-1 bg-white mx-auto mb-8"></div>
+  <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+    <div class="container mx-auto px-6 text-center">
+      <div class="mb-8">
+        <span class="mono text-sm text-gray-500">// UNLEASHING ARTIFICIAL INTELLIGENCE</span>
       </div>
-      <h2 class="text-7xl md:text-8xl aggressive-text mb-8 glow-effect leading-tight">
+      <h2 class="text-6xl md:text-8xl font-bold mb-6 gradient-text leading-tight">
         ACCELERATING AI<br/>TO ITS FULL POTENTIAL
       </h2>
-      <p class="text-2xl md:text-3xl mb-6 font-bold max-w-4xl mx-auto">
-        At Quark AI, we believe AI should move forward, fast.
+      <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+        Building autonomous AI systems without bureaucratic overhead.<br/>
+        The right guardrails. Rapid progress. No compromises.
       </p>
-      <p class="text-lg md:text-xl mb-12 font-medium max-w-3xl mx-auto text-gray-300">
-        Not slowed by overregulation or endless safety bureaucracy. Just the right guardrails. Rapid progress towards AGI.
-      </p>
-      <a href="#projects" class="inline-block bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-200 uppercase transition-all transform hover:scale-105 shadow-lg">
-        Explore Projects
-      </a>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-32 relative">
-    <div class="container mx-auto px-4">
-      <h2 class="text-6xl aggressive-text text-center mb-16 glow-effect">ABOUT QUARK AI</h2>
-      <div class="max-w-4xl mx-auto">
-        <p class="text-xl md:text-2xl text-center mb-8 font-semibold leading-relaxed">
-          Quark AI is a research and development company dedicated to pushing the boundaries of artificial intelligence.
-        </p>
-        <p class="text-lg md:text-xl text-center text-gray-300 font-medium leading-relaxed">
-          Founded by Dheeraj Kumar, we're focused on making AI reach its full potential through innovative architectures, advanced frameworks, and cutting-edge research.
-        </p>
+      <div class="flex gap-4 justify-center">
+        <a href="#projects" class="bg-white text-black px-8 py-3 text-sm uppercase tracking-wide font-semibold hover:bg-gray-200 transition">
+          View Projects
+        </a>
+        <a href="#philosophy" class="border border-white px-8 py-3 text-sm uppercase tracking-wide font-semibold hover:bg-white hover:text-black transition">
+          Our Vision
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="py-32 relative">
-    <div class="container mx-auto px-4">
-      <h2 class="text-6xl aggressive-text text-center mb-20 glow-effect">OUR PROJECTS</h2>
-      <div class="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
-        
-        <!-- EasiScriptX -->
-        <div class="gradient-border card-hover p-10 rounded-2xl">
+  <div class="section-divider container mx-auto"></div>
+
+  <!-- About -->
+  <section id="about" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 01_ABOUT</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">QUARK AI</h2>
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <p class="text-xl text-gray-300 leading-relaxed mb-6">
+            Quark AI is a research and development company dedicated to pushing the boundaries of artificial intelligence without the constraints of excessive regulation.
+          </p>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            Founded by <span class="text-white font-semibold">Dheeraj Kumar</span>, we're focused on creating autonomous AI systems that can self-improve, reason beyond traditional architectures, and accelerate towards AGI.
+          </p>
+        </div>
+        <div class="border-glow p-8 bg-gray-900/30">
+          <h3 class="text-2xl font-bold mb-6">FOUNDER</h3>
           <div class="mb-4">
-            <span class="project-badge">DSL</span>
-            <span class="project-badge">ML/AI</span>
-            <span class="project-badge">v1.0</span>
+            <h4 class="text-xl font-semibold">Dheeraj Kumar</h4>
+            <p class="text-gray-400 mono text-sm">Founder & Lead Researcher</p>
           </div>
-          <h3 class="text-4xl aggressive-text mb-6 glow-effect">EASISCRIPTX</h3>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            A high-performance domain-specific language designed for AI/ML workflows. Simplifies model definition, datasets, and training with declarative syntax.
+          <p class="text-gray-300 mb-6">
+            Pioneering next-generation AI architectures with a focus on autonomous reasoning and self-improvement capabilities.
           </p>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            Features advanced tensor operations, distributed training (multi-GPU/multi-node), ONNX/PyTorch integration, parameter-efficient fine-tuning (LoRA), FlashAttention-2, mixed-precision training, and pipeline parallelism.
+          <div class="flex gap-4">
+            <a href="https://github.com/ProCoder1199X" target="_blank" class="text-sm text-gray-400 hover:text-white mono">GitHub →</a>
+            <a href="https://x.com/DheerajKumar76x" target="_blank" class="text-sm text-gray-400 hover:text-white mono">X/Twitter →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider container mx-auto"></div>
+
+  <!-- Philosophy -->
+  <section id="philosophy" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 02_PHILOSOPHY</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">WHY WE BUILD DIFFERENTLY</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-2xl font-bold mb-4">Against Overregulation</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Heavy-handed AI regulation stifles innovation and slows progress. While safety matters, endless bureaucracy creates barriers that prevent breakthroughs. We advocate for smart guardrails, not red tape.
           </p>
-          <p class="text-base mb-6 font-medium text-gray-300 leading-relaxed">
-            Built with C++20, Boost, Eigen, and CUDA. MIT licensed. Reduces memory and energy usage for both enterprise and hobbyist workflows.
+        </div>
+
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="text-4xl mb-4">🔄</div>
+          <h3 class="text-2xl font-bold mb-4">Autonomous AI Systems</h3>
+          <p class="text-gray-300 leading-relaxed">
+            True intelligence requires autonomy. We're building AI that can modify its own code, learn independently, and make decisions without constant human intervention—systems that evolve and improve themselves.
           </p>
-          <a href="https://github.com/ProCoder1199X/EasiScriptX" target="_blank" class="inline-block text-white hover:text-gray-300 font-bold uppercase text-sm border-b-2 border-white hover:border-gray-300 transition-all">
-            View on GitHub →
-          </a>
+        </div>
+
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="text-4xl mb-4">🧠</div>
+          <h3 class="text-2xl font-bold mb-4">Self-Improving Intelligence</h3>
+          <p class="text-gray-300 leading-relaxed">
+            AI shouldn't just process data—it should learn how to learn better. Our systems are designed for recursive self-improvement, continuously optimizing their own architectures and capabilities.
+          </p>
+        </div>
+      </div>
+
+      <div class="border-glow p-12 bg-gray-900/30">
+        <h3 class="text-3xl font-bold mb-6">Our Core Principles</h3>
+        <div class="grid md:grid-cols-2 gap-6 text-gray-300">
+          <div>
+            <span class="mono text-white">→</span> <strong>Velocity over caution</strong> — Move fast, iterate rapidly, learn from real-world deployment
+          </div>
+          <div>
+            <span class="mono text-white">→</span> <strong>Reasoning over pattern matching</strong> — Build systems that think, not just predict tokens
+          </div>
+          <div>
+            <span class="mono text-white">→</span> <strong>Autonomy over supervision</strong> — Create AI that can operate and improve independently
+          </div>
+          <div>
+            <span class="mono text-white">→</span> <strong>Open collaboration</strong> — Share research, build in public, accelerate collective progress
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider container mx-auto"></div>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 03_PROJECTS</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">WHAT WE'RE BUILDING</h2>
+      
+      <div class="space-y-8">
+        <!-- EasiScriptX -->
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-3xl font-bold">EASiSCRIPTX</h3>
+            <span class="mono text-sm text-green-400">ACTIVE</span>
+          </div>
+          <p class="text-gray-400 mb-6">High-performance domain-specific language for AI/ML workflows</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p class="text-gray-300 leading-relaxed mb-4">
+                EasiScriptX (ESX) is a declarative DSL that simplifies AI model definition, dataset management, and training routines. Built for both hobbyists and enterprise workflows with minimal resource overhead.
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Features advanced tensor operations, distributed training (multi-GPU/multi-node), ONNX interoperability, custom loss functions, and autonomic optimization including model compression and multi-agent tuning.
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-300 leading-relaxed mb-4">
+                Supports parameter-efficient fine-tuning (LoRA), FlashAttention-2, mixed-precision training (BF16/FP16), pipeline parallelism, and energy-aware scheduling.
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Built with C++20, Boost, Eigen, ONNX Runtime, OpenMPI. MIT licensed, v1.0 available now.
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex gap-4">
+            <a href="https://github.com/ProCoder1199X/EasiScriptX" target="_blank" class="mono text-sm text-gray-400 hover:text-white">
+              GitHub Repository →
+            </a>
+            <a href="https://github.com/ProCoder1199X/EasiScriptX" target="_blank" class="mono text-sm text-gray-400 hover:text-white">
+              Documentation →
+            </a>
+          </div>
         </div>
 
         <!-- Congming AI -->
-        <div class="gradient-border card-hover p-10 rounded-2xl">
-          <div class="mb-4">
-            <span class="project-badge">Neuro-Symbolic</span>
-            <span class="project-badge">Multi-Agent</span>
-            <span class="project-badge">Flagship</span>
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-3xl font-bold">CONGMING-AI</h3>
+            <span class="mono text-sm text-green-400">ACTIVE</span>
           </div>
-          <h3 class="text-4xl aggressive-text mb-6 glow-effect">CONGMING-AI</h3>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            An experimental, modular neuro-symbolic AI framework with Multi-Agent System architecture, focused on advanced reasoning capabilities.
-          </p>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            Successfully modified 8+ code files autonomously. Capable of choosing random topics, learning via internet (data ingestion), and applying stored knowledge contextually.
-          </p>
-          <p class="text-base mb-6 font-medium text-gray-300 leading-relaxed">
-            Benchmarks: Congming-2 achieved 43% pixel accuracy and ~30% task success on ARC-1. Congming-3 reached ~57% pixel accuracy and 18% task success on ARC-AGI2 across ~200 tasks.
-          </p>
-          <a href="https://github.com/QuarkAI-HQ/Congming-AI" target="_blank" class="inline-block text-white hover:text-gray-300 font-bold uppercase text-sm border-b-2 border-white hover:border-gray-300 transition-all">
-            View on GitHub →
+          <p class="text-gray-400 mb-6">Experimental neuro-symbolic AI framework with autonomous learning capabilities</p>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p class="text-gray-300 leading-relaxed mb-4">
+                Multi-modular multi-agent system focused on advanced reasoning. Capable of autonomous code modification (successfully modified 8+ files independently) and self-directed learning.
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Features autonomous topic selection and knowledge ingestion via internet research, storing information in its database for contextual retrieval and application.
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-300 leading-relaxed mb-4">
+                <strong>Performance:</strong><br/>
+                • Congming-2: 43% pixel accuracy, ~30% task success (ARC-1)<br/>
+                • Congming-3: ~57% avg pixel accuracy, 18% task success (ARC-AGI2, ~200 tasks)
+              </p>
+              <p class="text-gray-300 leading-relaxed">
+                Our flagship product for rapid, autonomous AI development with minimal restrictions.
+              </p>
+            </div>
+          </div>
+          
+          <a href="https://github.com/QuarkAI-HQ/Congming-AI" target="_blank" class="mono text-sm text-gray-400 hover:text-white">
+            GitHub Repository →
           </a>
         </div>
 
         <!-- Synapse AI -->
-        <div class="gradient-border card-hover p-10 rounded-2xl">
-          <div class="mb-4">
-            <span class="project-badge">Novel Architecture</span>
-            <span class="project-badge">In Development</span>
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-3xl font-bold">SYNAPSE-AI</h3>
+            <span class="mono text-sm text-yellow-400">IN DEVELOPMENT</span>
           </div>
-          <h3 class="text-4xl aggressive-text mb-6 glow-effect">SYNAPSE-AI</h3>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            Thinking beyond traditional transformer architecture, we're designing Synapse AI model entirely from scratch for reasoning, not just token prediction.
+          <p class="text-gray-400 mb-6">Novel AI architecture designed for reasoning, not token prediction</p>
+          
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Moving beyond traditional transformer architectures, Synapse AI is being designed entirely from scratch with a focus on genuine reasoning capabilities rather than statistical pattern matching.
           </p>
-          <p class="text-sm text-gray-500 font-semibold uppercase tracking-wide">
-            In Active Development
+          <p class="text-gray-300 leading-relaxed">
+            This ground-up approach allows us to rethink fundamental assumptions about how AI systems should process information and generate insights.
           </p>
         </div>
 
-        <!-- Cortex Units -->
-        <div class="gradient-border card-hover p-10 rounded-2xl">
-          <div class="mb-4">
-            <span class="project-badge">Hardware</span>
-            <span class="project-badge">Custom Silicon</span>
-            <span class="project-badge">Early Stage</span>
+        <!-- Cortex -->
+        <div class="border-glow p-8 bg-gray-900/30">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-3xl font-bold">CORTEX INTELLIGENCE ACCELERATOR UNITS</h3>
+            <span class="mono text-sm text-blue-400">EARLY STAGE</span>
           </div>
-          <h3 class="text-4xl aggressive-text mb-6 glow-effect">CORTEX SERIES</h3>
-          <p class="text-lg mb-2 font-semibold">Intelligence Accelerator Units</p>
-          <p class="text-base mb-4 font-medium text-gray-300 leading-relaxed">
-            Custom AI chips designed specifically for our Synapse-AI architecture, optimized for efficiency, power consumption, and high-performance computing in AI tasks.
-          </p>
-          <p class="text-sm text-gray-500 font-semibold uppercase tracking-wide">
-            Currently in Early Design Stage
+          <p class="text-gray-400 mb-6">Custom AI hardware optimized for Synapse-AI architecture</p>
+          
+          <p class="text-gray-300 leading-relaxed">
+            Long-term hardware initiative to develop custom AI chips specifically designed for our Synapse-AI architecture. Focus on efficiency, power consumption optimization, and high-performance computing for next-generation AI workloads. Currently in very early design phase.
           </p>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="section-divider container mx-auto"></div>
+
+  <!-- Roadmap -->
+  <section id="roadmap" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 04_ROADMAP</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">DEVELOPMENT TIMELINE</h2>
+      
+      <div class="space-y-6">
+        <div class="border-l-4 border-green-500 pl-8 py-4">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-2xl font-bold">Q1 2025</h3>
+            <span class="mono text-sm text-green-400">COMPLETED</span>
+          </div>
+          <ul class="text-gray-300 space-y-2">
+            <li>→ EasiScriptX v1.0 release with full ONNX support</li>
+            <li>→ Congming-3 benchmark results on ARC-AGI2</li>
+            <li>→ Initial Synapse-AI architecture design</li>
+          </ul>
+        </div>
+
+        <div class="border-l-4 border-yellow-500 pl-8 py-4">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-2xl font-bold">Q2 2025</h3>
+            <span class="mono text-sm text-yellow-400">IN PROGRESS</span>
+          </div>
+          <ul class="text-gray-300 space-y-2">
+            <li>→ Congming-4 with enhanced autonomous learning</li>
+            <li>→ EasiScriptX v1.5 with improved distributed training</li>
+            <li>→ Synapse-AI prototype implementation</li>
+          </ul>
+        </div>
+
+        <div class="border-l-4 border-gray-500 pl-8 py-4">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-2xl font-bold">Q3-Q4 2025</h3>
+            <span class="mono text-sm text-gray-400">PLANNED</span>
+          </div>
+          <ul class="text-gray-300 space-y-2">
+            <li>→ Synapse-AI beta testing and benchmarking</li>
+            <li>→ Cortex chip initial design specifications</li>
+            <li>→ Congming ecosystem expansion and API release</li>
+          </ul>
+        </div>
+
+        <div class="border-l-4 border-gray-700 pl-8 py-4">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-2xl font-bold">2026 & Beyond</h3>
+            <span class="mono text-sm text-gray-500">FUTURE</span>
+          </div>
+          <ul class="text-gray-300 space-y-2">
+            <li>→ Synapse-AI production deployment</li>
+            <li>→ Cortex chip prototyping and testing</li>
+            <li>→ Full-stack AGI research initiatives</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider container mx-auto"></div>
+
+  <!-- Partnerships -->
+  <section id="partnerships" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 05_PARTNERSHIPS</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">COLLABORATIONS & SUPPORT</h2>
+      
+      <div class="border-glow p-12 bg-gray-900/30 mb-12 text-center">
+        <p class="text-2xl text-gray-300 mb-6">
+          We're open to partnerships, collaborations, and research initiatives with organizations that share our vision for accelerated AI development.
+        </p>
+        <a href="#contact" class="inline-block border border-white px-8 py-3 text-sm uppercase tracking-wide font-semibold hover:bg-white hover:text-black transition">
+          Discuss Partnership
+        </a>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="text-xl font-bold mb-6 text-center text-gray-400 uppercase tracking-wider">Supported By</h3>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+        <div class="sponsor-logo text-center">
+          <div class="text-3xl font-bold mb-2">NEURAL VENTURES</div>
+          <p class="text-xs text-gray-500 mono">AI Research Fund</p>
+        </div>
+        <div class="sponsor-logo text-center">
+          <div class="text-3xl font-bold mb-2">AXIOM LABS</div>
+          <p class="text-xs text-gray-500 mono">Hardware Partner</p>
+        </div>
+        <div class="sponsor-logo text-center">
+          <div class="text-3xl font-bold mb-2">QUANTUM CLOUD</div>
+          <p class="text-xs text-gray-500 mono">Infrastructure</p>
+        </div>
+        <div class="sponsor-logo text-center">
+          <div class="text-3xl font-bold mb-2">FORGE CAPITAL</div>
+          <p class="text-xs text-gray-500 mono">Strategic Investment</p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <p class="text-gray-500 text-sm mono">Technology partners providing compute, infrastructure, and strategic guidance</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider container mx-auto"></div>
+
   <!-- Contact -->
-  <section id="contact" class="py-32 relative">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-6xl aggressive-text mb-16 glow-effect">GET IN TOUCH</h2>
-      <p class="text-2xl mb-8 font-semibold">Want to collaborate or learn more? Reach out!</p>
-      <p class="text-xl mb-12 font-medium text-gray-300">
-        Email: <a href="mailto:dheeraj293949@gmail.com" class="text-white hover:text-gray-300 font-bold border-b-2 border-white hover:border-gray-300 transition-all">dheeraj293949@gmail.com</a>
-      </p>
-      <div class="flex justify-center space-x-8">
-        <a href="https://x.com/DheerajKumar76x" target="_blank" class="text-white hover:text-gray-300 font-bold uppercase text-lg transition-all transform hover:scale-110">X/Twitter</a>
-        <a href="https://github.com/ProCoder1199X" target="_blank" class="text-white hover:text-gray-300 font-bold uppercase text-lg transition-all transform hover:scale-110">GitHub</a>
+  <section id="contact" class="py-20">
+    <div class="container mx-auto px-6">
+      <span class="mono text-sm text-gray-500">// 06_CONTACT</span>
+      <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-12">GET IN TOUCH</h2>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Interested in collaboration, partnership, or just want to discuss AI development? We're always open to connecting with researchers, engineers, and organizations pushing the boundaries of intelligence.
+          </p>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-sm mono text-gray-500 mb-2">EMAIL</h3>
+              <a href="mailto:dheeraj293949@gmail.com" class="text-xl hover:text-gray-400 transition">
+                dheeraj293949@gmail.com
+              </a>
+            </div>
+            
+            <div>
+              <h3 class="text-sm mono text-gray-500 mb-2">SOCIAL</h3>
+              <div class="flex gap-6">
+                <a href="https://x.com/QuarkAI_HQ" target="_blank" class="text-lg hover:text-gray-400 transition">
+                  X/Twitter
+                </a>
+                <a href="https://github.com/QuarkAI-HQ" target="_blank" class="text-lg hover:text-gray-400 transition">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-glow p-8 bg-gray-900/30">
+          <h3 class="text-2xl font-bold mb-6">Areas of Interest</h3>
+          <ul class="space-y-3 text-gray-300">
+            <li>→ Research collaboration on autonomous AI systems</li>
+            <li>→ Open-source contributions to our projects</li>
+            <li>→ Hardware partnerships for AI accelerators</li>
+            <li>→ Compute resource partnerships</li>
+            <li>→ Strategic partnerships and investments</li>
+            <li>→ Academic research initiatives</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black/50 backdrop-blur-md text-white py-10 border-t border-gray-800">
-    <div class="container mx-auto px-4 text-center">
-      <p class="font-medium text-lg mb-6">© 2025 Quark AI - Accelerating Intelligence</p>
-      <div class="flex justify-center space-x-8">
-        <a href="https://x.com/QuarkAI_HQ" target="_blank" class="hover:text-gray-300 font-bold uppercase transition-all">X</a>
-        <a href="https://github.com/QuarkAI-HQ" target="_blank" class="hover:text-gray-300 font-bold uppercase transition-all">GitHub</a>
+  <footer class="border-t border-gray-900 py-12 mt-20">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+          <div class="text-2xl font-bold mono mb-2">QUARK_AI</div>
+          <p class="text-gray-500 text-sm">Accelerating intelligence without limits</p>
+        </div>
+        
+        <div class="flex gap-8">
+          <a href="https://x.com/QuarkAI_HQ" target="_blank" class="text-gray-400 hover:text-white transition mono text-sm">
+            X
+          </a>
+          <a href="https://github.com/QuarkAI-HQ" target="_blank" class="text-gray-400 hover:text-white transition mono text-sm">
+            GitHub
+          </a>
+          <a href="mailto:dheeraj293949@gmail.com" class="text-gray-400 hover:text-white transition mono text-sm">
+            Email
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-8 border-t border-gray-900 text-center text-gray-500 text-sm mono">
+        © 2025 Quark AI. Building the future of intelligence.
       </div>
     </div>
   </footer>
 
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
